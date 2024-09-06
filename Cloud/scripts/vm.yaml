@@ -1,0 +1,26 @@
+vm_name: evilmachine
+#Indique su sistema operativo, recuerde usar el comando "$vboxmanage list ostypes"
+ostype: Ubuntu_64
+
+#Indique la cantidad de memoria RAM
+mem: 4096
+
+#Indique la cantidad de nucleos de procesamiento a dar a su maquina virtual
+cores: 3
+
+#Indique la cantidad de espacio en disco para brindar a su maquinav virtual
+disk_space: 20000
+
+#Indique el adaptador de red
+network_adapter: bridged
+
+#Si network_adapter está en modo bridged, y bridged_adapter está vaćio,
+#el sistema buscará su interfaz con conexión a internet por defecto.
+bridged_adapter: 
+
+#Controlador de video:
+graphics_controller: vmsvga
+
+#Cantida de memoria de video a dedicar.
+vmem: 128
+
