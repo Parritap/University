@@ -1,5 +1,0 @@
-DEVICE          TYPE      STATE                   CONNECTION         
-wlp3s0          wifi      connected               Flia Parra Hill 5G 
-lo              loopback  connected (externally)  lo                 
-p2p-dev-wlp3s0  wifi-p2p  disconnected            --                 
-enp4s0          ethernet  unavailable             --                 
