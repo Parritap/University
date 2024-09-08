@@ -12,7 +12,7 @@ declare disk_dir="" #The directory where the VM's volume is going to be stored.
 get_val() {
   val=$(grep -P "^$1:.*" "$file" | cut -d':' -f2 | sed 's/ //g')
 
-  if [[ -z "$val" ]]; then
+if [[ -z "$val" ]]; then
     echo "ERROR: NO VALUE EXISTS FOR PROPERTY '$1'....... ABORTING"
     exit 1
   else

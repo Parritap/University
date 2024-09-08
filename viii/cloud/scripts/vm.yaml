@@ -1,4 +1,4 @@
-vm_name: evilmachine
+vm_name: machine_b
 #Indique su sistema operativo, recuerde usar el comando "$vboxmanage list ostypes"
 ostype: Ubuntu_64
 
@@ -28,6 +28,6 @@ graphics_controller: vmsvga
 #Cantida de memoria de video a dedicar.
 vmem: 128
 
-iso: /home/
+iso: /home/esteban/Documents/isos/ubuntu24.iso
 
 
