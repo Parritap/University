@@ -24,17 +24,19 @@ declare space_in_g=""
 ## This is a String that contains the script that will be executed in the guest machine
 ## The values of the variables are substituted in the script
 # The following DOES NOT TAKE IN COUNT THE PRESENT VARAIBLES but GUEST_OS VARIABLES.
-#declare myscript=$(cat <<'EOF'
+#declare guest_script=$(cat <<'EOF'
 #disk=$(lsblk | grep "$(python3 -c "print($DISK_SIZE/1000)")G") #Greps the disk that has the size of the disk we want to format
 #EOF
 #)
 
 #The following DOES TAKE IN COUNT THE PRESENT VARAIBLES
-myscript="$myscript\
-var="$(python3 -c "print($DISK_SIZE/1000)")G"
-disk=$(lsblk | grep "$(python3 -c "print($DISK_SIZE/1000)")G")
-echo $var
-echo $disk
+
+#Guest disk_size variable should be filles only with numbers, the MB quantity.
+guest_script="
+if [[ -z "$(grep -P "^disk_size=[0-9]+" "/home/$VM_USER/.bashrc")" ]]; then
+  echo "disk_size=$DISK_SIZE" >> "/home/$VM_USER/.bashrc"
+  source "/home/$VM_USER/.bashrc"
+fi
 "
 
 
@@ -100,7 +102,7 @@ function clean_path() {
 #Now lets start the VM
 ##vboxmanage startvm "$VM_NAME" --type gui
 ##sleep 12s
-#"$(cat $myscript)"
-vboxmanage guestcontrol "$VM_NAME" run --exe "/bin/bash" --username $VM_USER --password $VM_PASS  --wait-stdout --wait-stderr -- -c "$(echo $myscript)"
+#"$(cat $guest_script)"
+vboxmanage guestcontrol "$VM_NAME" run --exe "/bin/bash" --username $VM_USER --password $VM_PASS  --wait-stdout --wait-stderr -- -c "$(echo "$guest_script")"
 
 
