@@ -33,10 +33,16 @@ declare space_in_g=""
 
 #Guest disk_size variable should be filles only with numbers, the MB quantity.
 guest_script="
-if [[ -z "$(grep -P "^disk_size=[0-9]+" "/home/$VM_USER/.bashrc")" ]]; then
+if grep -q "^disk_size=" "/home/$VM_USER/.bashrc"; then
+  # Replace the existing disk_size value
+  sed -i "s/^disk_size=.*/disk_size=$DISK_SIZE/" "/home/$VM_USER/.bashrc"
+else
+  # Add disk_size if it doesn't exist
   echo "disk_size=$DISK_SIZE" >> "/home/$VM_USER/.bashrc"
-  source "/home/$VM_USER/.bashrc"
 fi
+
+# Reload the .bashrc to apply changes
+source "/home/$VM_USER/.bashrc"
 "
 
 
