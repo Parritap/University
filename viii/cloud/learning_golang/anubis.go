@@ -34,12 +34,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	//cantidad, _ := strconv.Atoi(os.Args[2])
 	cantidad := rand.Intn(3) + 1
 
+	//Chooses a random HTML template:
 	randNumber := strconv.Itoa(rand.Intn(3) + 1)
-	tmplPath := filepath.Join("plantillas", "index"+randNumber+".html")
+	fmt.Println(os.Args[0])
+	tmplPath := filepath.Join("html", "index"+randNumber+".html")
 
 	//
 	tmpl, err := template.ParseFiles(tmplPath)
 	if err != nil {
+		fmt.Println(err)
 		http.Error(w, "Error al cargar la plantilla", http.StatusInternalServerError)
 		return
 	}
@@ -50,7 +53,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	imagenes, _ := cargarImagenes("./imagenes/"+carpeta, cantidad)
+	imagenes, _ := GetImages("./images/"+carpeta, cantidad)
 
 	fmt.Println(imagenes)
 	data := PageData{
@@ -68,7 +71,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handler)
-
 	puerto := ":8280"
 	fmt.Printf("Servidor iniciado en http://localhost%s\n", puerto)
 	err := http.ListenAndServe(puerto, nil)
@@ -86,7 +88,7 @@ func esImagen(nombreArchivo string) bool {
 	return false
 }
 
-func cargarImagenes(carpeta string, limite int) ([]Imagen, error) {
+func GetImages(carpeta string, limite int) ([]Imagen, error) {
 	archivos, err := ioutil.ReadDir(carpeta)
 	if err != nil {
 		return nil, err
@@ -124,6 +126,5 @@ func cargarImagenes(carpeta string, limite int) ([]Imagen, error) {
 	if len(imagenes) > limite {
 		imagenes = imagenes[:limite]
 	}
-
 	return imagenes, nil
 }
