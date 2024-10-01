@@ -3,8 +3,8 @@
 
 
 declare DISK_SIZE=1200
-if [[ -z "$(grep "disk_size" "/home/$USER/.bashrc")" ]]; then
-  echo "disk_size=$DISK_SIZE" >> "/home/$USER/.bashrc"
+if [[ -z "$(grep "export disk_size" "/home/$USER/.bashrc")" ]]; then
+  echo "export disk_size=$DISK_SIZE" >> "/home/$USER/.bashrc"
 fi
 
 

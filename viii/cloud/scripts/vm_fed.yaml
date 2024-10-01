@@ -1,6 +1,6 @@
-vm_name: machine_b
+vm_name: Hermes_fedora
 #Indique su sistema operativo, recuerde usar el comando "$vboxmanage list ostypes"
-ostype: Ubuntu_64
+ostype: Fedora_64
 
 #Indique la cantidad de memoria RAM
 mem: 4096
@@ -28,6 +28,6 @@ graphics_controller: vmsvga
 #Cantida de memoria de video a dedicar.
 vmem: 128
 
-iso: /home/esteban/Documents/isos/ubuntu24.iso
+iso: /home/esteban/Documents/isos/fedora.iso
 
 

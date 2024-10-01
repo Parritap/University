@@ -34,7 +34,7 @@ set_bridged_adapter() {
 }
 
 
-# Evalutes which mode is going to be set for vm's nic1.
+# Evaluates which mode is going to be set for vm's nic1.
 # For now, this script only allows to the user to set up one vm nic. 
 eval_net_adapter_type() {
   val=$(grep "network_adapter:" "$file" | cut -d':' -f2) 

@@ -33,16 +33,19 @@ declare space_in_g=""
 
 #Guest disk_size variable should be filles only with numbers, the MB quantity.
 guest_script="
-if grep -q "^disk_size=" "/home/$VM_USER/.bashrc"; then
-  # Replace the existing disk_size value
-  sed -i "s/^disk_size=.*/disk_size=$DISK_SIZE/" "/home/$VM_USER/.bashrc"
+if grep -q "^export disk_size=" "/home/$VM_USER/.bashrc"; then
+  # Replace the existing export disk_size value
+  sed -i "s/^export disk_size=.*/export disk_size=$DISK_SIZE/" "/home/$VM_USER/.bashrc"
 else
-  # Add disk_size if it doesn't exist
-  echo "disk_size=$DISK_SIZE" >> "/home/$VM_USER/.bashrc"
+  # Add export disk_size if it doesn't exist
+  echo "export disk_size=$DISK_SIZE" >> "/home/$VM_USER/.bashrc"
 fi
 
 # Reload the .bashrc to apply changes
 source "/home/$VM_USER/.bashrc"
+
+#Now execute the script that is in the guestOS
+bash /home/$VM_USER/scripts/format_disk.sh
 "
 
 
