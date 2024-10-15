@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstebanDev</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000000;
+            cursor: none;
+        }
+
+        #bg {
+            position: fixed;
+            z-index: -1;
+            top: -300%;
+            left: -150%;
+            height: 600%;
+            width: 600%;
+            -webkit-animation: grain 7s steps(10) infinite;
+            animation: grain 7s steps(20) infinite;
+            background-image: url(./resources/noise.png);
+            background-size: 200px;
+            background-repeat: repeat;
+            opacity: .25;
+        }
+
+        @keyframes grain {
+
+            0%, 100% {
+                transform: translate(0);
+            }
+            10% {
+                transform: translate(-5%, -10%);
+            }
+            20% {
+                transform: translate(-15%, 5%);
+            }
+            30% {
+                transform: translate(7%, -25%);
+            }
+            40% {
+                transform: translate(-5%, 25%);
+            }
+            50% {
+                transform: translate(-15%, 10%);
+            }
+            60% {
+                transform: translate(15%);
+            }
+            70% {
+                transform: translateY(15%);
+            }
+            80% {
+                transform: translate(3%, 35%);
+            }
+            90% {
+                transform: translate(-10%, 10%);
+            }
+
+        }
+
+        .intro {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 4.5rem;
+            color: aliceblue;
+            display: inline;
+            margin: 1px;
+        }
+
+        #two {
+            margin-left: 50%;
+        }
+
+
+        .horizontal {
+            display: flex;
+            flex-direction: row;
+            z-index: 0;
+        }
+
+
+        #intro-section {
+            margin-top: 23%;
+            margin-bottom: 22%;
+        }
+
+
+        #name {
+            margin-left: 10%;
+            width: 50%;
+            display: flex;
+
+            text-align: end;
+            justify-content: end;
+            margin-right: 2%;
+        }
+
+        #fullstack {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        #bar {
+            width: 100%;
+            /* Set the width to 100% to match the parent */
+            height: 1.5%;
+            background-color: white;
+            transform: scaleX(1);
+            /* Set the initial scale to 100% */
+            transform-origin: left top;
+            animation: scaleAnimation 3.5s ease-out forwards;
+            /* Apply the animation */
+        }
+
+
+        @keyframes scaleAnimation {
+            from {
+                transform: scaleX(0);
+                /* Start with zero scale */
+            }
+
+            to {
+                transform: scaleX(1);
+                /* End with full scale */
+            }
+        }
+
+
+        #full {
+            color: rgb(255, 105, 68);
+            font-weight: 800;
+        }
+
+        #stack {
+            color: rgb(255, 206, 43);
+            font-weight: 800;
+        }
+
+        #developer {
+            color: rgb(136, 247, 237);
+            font-weight: 800;
+
+        }
+
+        .type-machine {
+            display: inline-block;
+            width: max-content;
+        }
+
+
+        .introRigth {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 4.5rem;
+            color: aliceblue;
+            margin: 0px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 5px solid rgba(255, 255, 255, 0.738);
+            animation: typing 3.5s,
+            border-hide 3.5s ease-in-out 4s forwards,
+            cursor 0.5s step-end infinite alternate;
+        }
+
+
+        @keyframes cursor {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+
+        @keyframes border-hide {
+            to {
+                border-right: 0;
+            }
+        }
+
+        #presentation {
+            display: flex;
+            flex-direction: row;
+        }
+
+
+        #me {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            color: aliceblue;
+            font-size: 12rem;
+            text-align: center;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+
+        .text {
+            font-family: 'Inter', sans-serif;
+            color: aliceblue;
+        }
+
+
+        #about {
+            margin-top: 30%;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: aliceblue;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20%;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .column {
+            flex-direction: column;
+        }
+
+        .row {
+            flex-direction: row;
+        }
+
+        #thatsme {
+            width: 50%;
+            flex-direction: column;
+        }
+
+        #coin {
+            width: 50%;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+
+        #coin:hover {
+            transform: rotateY(180deg);
+        }
+
+        #film {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            z-index: 2;
+            /* background-color: rgba(0, 255, 255, 0.5); */
+        }
+
+
+        #front {
+            width: 100%;
+            position: absolute;
+            /* margin-left: 10%; */
+            min-width: 30%;
+            max-width: 100%;
+            backface-visibility: hidden;
+        }
+
+        #back {
+            position: absolute;
+            width: 100%;
+            /* margin-left: 10%; */
+            min-width: 30%;
+            max-width: 100%;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        }
+
+        #profilePic,
+        #reversePic {
+            z-index: 0;
+            width: 100%;
+            border-radius: 1000px;
+        }
+
+        #aux {
+            width: 5%
+        }
+
+
+        .hidden {
+            opacity: 0;
+            transition: all 3s;
+            filter: blur(5px);
+            /* transform: translateX(-100%); */
+        }
+
+        @media (prefers-reduced-motion) {
+            .hidden {
+                transition: none;
+            }
+        }
+
+        .visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+        }
+
+
+        #dot {
+            z-index: 1000;
+            width: 5px;
+            height: 5px;
+            background-color: rgb(84, 255, 164);
+        }
+
+        #cursor-outline {
+            width: 100px;
+            height: 100px;
+            border-radius: 1000px;
+            border: 2px solid rgb(255, 255, 255);
+            /* background-color: rgb(0, 0, 0); */
+            /* mix-blend-mode: difference; */
+            /* filter: invert(100%); */
+            z-index: 2;
+        }
+
+        #dot,
+        #cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 1000px;
+            pointer-events: none;
+        }
+
+
+        .inspire {
+            margin-left: 10%;
+            margin-right: 10%;
+            font-size: 4rem;
+            justify-content: center;
+            text-align: center;
+            font-style: italic;
+        }
+
+        #face {
+            font-size: 13rem;
+            font-weight: bolder;
+            transform: rotate(90deg);
+            letter-spacing: 1.5rem;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+
+        .res-grid {
+            display: grid;
+            grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+    );
+        }
+
+        #technologies {
+            top: 50%;
+            left: 50%;
+        }
+
+        .tech-img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        .card-front {
+            font-size: 3rem;
+            width: 400px;
+            height: 400px;
+            min-width: 10%;
+            min-height: 10%;
+            background-color: rgb(215, 215, 215);
+            border-radius: 10px;
+            transition: all .5s;
+            font-weight: bold;
+
+        }
+
+        .card-back {
+            font-size: 2rem;
+            width: 400px;
+            height: 400px;
+            min-width: 10%;
+            min-height: 10%;
+            background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+            border-radius: 2rem
+        }
+
+        .card-front:hover {
+            transform: scale(0.98);
+            border-radius: 30px;
+        }
+
+        .card-back:hover {
+            box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30),
+            8px 8px 40px 1px rgba(166, 255, 240, 0.66);
+        }
+
+        .black {
+            color: black !important;
+        }
+
+        .margin10 {
+            margin: 5%
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- The following three lines build the cursor of the webpage -->
+<div id="dot" data-cursor-dot></div>
+<div id="cursor-outline" data-cursor-outline></div>
+
+<!-- This is needed for the grain background effect, credits to CHARLES BRUYERRE, his portfolio is the following https://itssharl.ee/fr-->
+<div id="bg"></div>
+
+
+<section class="horizontal" id="intro-section">
+
+
+    <div id="name">
+        <div>
+            <h1 class="intro" id="one">{{.Titulo}}</h1>
+            <div id="bar"></div>
+        </div>
+    </div>
+    <div id="fullstack">
+
+        <div class="type-machine">
+            <p class="introRigth" id="full">{{.Hostname}}l&#8201;</p>
+        </div>
+
+        <div class="type-machine">
+            <p class="introRigth" id="stack">{{.Tema}}&#8201;</p>
+        </div>
+
+        <div class="type-machine">
+            <p class="introRigth" id="developer">Cloud Computing&#8201;</p>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="hidden" id="presentation">
+    <div id="aux"></div>
+    <div id="film"></div>
+    <div class="center" id="coin">
+        <div class="center" id="front">
+            {{range .Imagenes}}
+            <img id="profilePic" src="data:image/{{.Extension}};base64, {{.Contenido}}" alt={{.Nombre}}>
+            {{end}}
+        </div>
+
+        <!--
+                    <div class="center" id="back">
+                        <img loading="lazy" src="resources/me_back.jpg" id="reversePic" alt="reverse">
+                    </div>
+        -->
+
+    </div>
+</div>
+
+<div class="hidden" id="about">
+    <div class="center column">
+        <div class="inspire text">
+            "I believe that a webpage is not just a way to show content, nor should it be just a business tool.
+            A webpage is a dynamic canvas with endless possibilities for creativity.
+        </div>
+        <div class="inspire text">
+            <br>
+            My mission? To make a painting with ones and
+            zeros.
+        </div>
+    </div>
+</div>
+
+<!--
+<div>
+<div id="technologies">
+<div class="res-grid">
+    <div class="tech-img"><img src="resources/tech/java.svg"></div>
+    <div class="tech-img"><img src="resources/tech/js.svg"></div>
+    <div class="tech-img"><img src="resources/tech/angular.svg"></div>
+    <div class="tech-img"><img src="resources/tech/spring.svg"></div>
+    <div class="tech-img"><img src="resources/tech/linux.svg"></div>
+    <div class="tech-img"><img src="resources/tech/git.svg"></div>
+    <div class="tech-img"></div>
+</div>
+</div> -->
+
+<div class="hidden center row">
+
+    <div class="margin10">
+        <div class="card-back">
+            <a href="https://www.google.com/" style="text-decoration: none">
+                <div class="card-front center">
+                    <div class="text black">Projects</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="margin10">
+        <div class="card-back">
+            <a hreft="" style="text-decoration: none">
+                <div class="card-front center">
+                    <div class="text black">Abilities</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+<script defer>
+    const coin = document.querySelector('#coin');
+    const film = document.querySelector('#film');
+
+
+    film.addEventListener('mouseover', () => {
+        coin.style = 'transform: rotateY(180deg); transition: all 0.5s ease;';
+    });
+
+    film.addEventListener('mouseout', () => {
+        coin.style.removeProperty('transform');
+        coin.style.removeProperty('transition');
+    });
+
+    // The following lines are for adding the blur effect whenever the user scrolls the page down
+    // credits to FireShip.
+
+    const hiddenSubject = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    });
+
+    const hiddenObjects = document.querySelectorAll('.hidden');
+    hiddenObjects.forEach(element => hiddenSubject.observe(element))
+
+
+    // The following is for making the cursor divs to follow the pointer (which is invisible)
+    const cursorDot = document.querySelector("[data-cursor-dot]");
+    const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+    window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, {
+            duration: 150, fill: "forwards"
+        });
+    });
+
+
+    // Chaging the smaling face content on hover:
+
+    const face = document.querySelector("#face");
+    console.log(face);
+
+    face.addEventListener(("mouseover"), () => {
+        face.innerHTML = ";)";
+    });
+
+    face.addEventListener(("mouseout"), () => {
+        face.innerHTML = ":)";
+    });
+
+    // ---------------------------------------------
+
+
+</script>
+
+</html>
